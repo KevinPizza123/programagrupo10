@@ -1,8 +1,7 @@
 package programa.programa.entities;
 
-import java.io.Serializable;
-
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import jakarta.persistence.Column;
@@ -21,21 +20,21 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "programa_linea_investigacion")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-public class ProgramaLineaInvestigacion {
+@Table(name = "programa_carreras")
+public class ProgramaCarreras {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Integer id;
+    @Column(name = "id")
+    private Integer idPc;
 
-    @Column(name = "línea_investigación", nullable = false)
-    private Integer líneaInvestigación;
+    @Column(name = "id_carrera", nullable = false)
+    private int idCarrera;
 
-    @ManyToOne
-    @JoinColumn(name = "programa", referencedColumnName = "id")
-    private Programa programa;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "id_programa", referencedColumnName = "id")
+    @JsonIdentityReference(alwaysAsId = true) // Utiliza @JsonIdentityReference en lugar de @JsonIdentityInfo
+    private Programa idPrograma;
 
     // Getters y setters
 }

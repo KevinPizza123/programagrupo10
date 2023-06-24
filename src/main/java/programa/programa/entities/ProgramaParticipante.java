@@ -21,21 +21,21 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "programaparticipante")
+@Table(name = "programa_participante")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-public class ProgramaParticipante implements Serializable {
-
+public class ProgramaParticipante {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     @Column(name = "id", nullable = false)
     private Integer id;
+
     @Column(name = "docente_responsable", nullable = false)
     private Integer docenteResponsable;
-    @JoinColumn(name = "programa", referencedColumnName = "id")
+
     @ManyToOne
+    @JoinColumn(name = "programa", referencedColumnName = "id")
     private Programa programa;
 
-
-    }
+    // Getters y setters
+}

@@ -1,7 +1,5 @@
 package programa.programa.entities;
 
-import java.io.Serializable;
-
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -21,21 +19,22 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "programa_linea_investigacion")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-public class ProgramaLineaInvestigacion {
+@Table(name = "programa_proyecto")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idPp")
+
+public class ProgramaProyecto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Integer id;
+    @Column(name = "id_pp")
+    private Integer idPp;
 
-    @Column(name = "línea_investigación", nullable = false)
-    private Integer líneaInvestigación;
+    @Column(name = "id_proyecto")
+    private int idProyecto;
 
-    @ManyToOne
-    @JoinColumn(name = "programa", referencedColumnName = "id")
-    private Programa programa;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "id_programa", referencedColumnName = "id")
+    private Programa idPrograma;
 
     // Getters y setters
 }

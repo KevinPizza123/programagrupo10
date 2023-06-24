@@ -24,30 +24,34 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Table(name = "cronograma")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-public class Cronograma  {
+public class Cronograma {
 
-   
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-  
     @Column(name = "id", nullable = false)
     private Integer id;
+
     @Column(name = "tarea", nullable = false)
     private String tarea;
+
     @Column(name = "responsable", nullable = false)
     private String responsable;
+
     @Column(name = "fecha_inicio", nullable = false)
-  
     private Date fechaInicio;
+
     @Column(name = "fecha_finalizacion", nullable = false)
-  
     private Date fechaFinalizacion;
+
     @Column(name = "avance", nullable = false)
     private String avance;
+
     @Column(name = "estado_tarea", nullable = false)
     private Boolean estadoTarea;
-    @JoinColumn(name = "idprograma", referencedColumnName = "id")
+
     @ManyToOne
+    @JoinColumn(name = "idprograma", referencedColumnName = "id")
     private Programa idprograma;
 
+    // Getters y setters
 }
