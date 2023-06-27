@@ -42,10 +42,9 @@ public class ProgramaProyectosInvestigacion {
     @Column(name = "estado", nullable = false)
     private Boolean estado;
 
-    @OneToOne
+     @OneToOne
     @JoinColumn(name = "programa_id")
     private Programa programa;
-
 
     // Getters y setters
 }
